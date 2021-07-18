@@ -1,0 +1,39 @@
+{% load djangocms_blog i18n easy_thumbnails_tags cms_tags %}
+
+<article class="card mb-5">
+  <div class="card-body p-5">
+    <small class="d-block-2">
+        {% if post.date_published %}
+
+        {{ post.date_published|date:"DATE_FORMAT" }}
+
+        {% endif %}
+    </small>
+    <h2 class="h5">
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    </h2>
+    <p class="mb-0">
+    {% if not TRUNCWORDS_COUNT %} {% render_model post "abstract" "" "" "safe" %} {% else %} {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe" %} 
+    {% endif %}
+    </p>
+  </div>
+  <div class="card-footer bg-gray-100 py-4 px-5">
+    <div class="media">
+    {% if image and post.main_image %}
+    {% thumbnail post.main_image post.thumbnail_options.size crop=post.thumbnail_options.crop upscale=post.thumbnail_options.upscale subject_location=post.main_image.subject_location as thumb %}
+      <img
+        class="u-sm-avatar rounded-circle mr-3"
+        src="{{thumb.url}}"
+        alt="{{ post.main_image.default_alt_text }}"
+      />
+    {% endif %}
+      <div class="media-body">
+        <h3 class="d-inline-block mb-0">
+            {% if post.author %}
+            <a class="d-block font-size-13" href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
+            {% endif %}
+        </h3>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,34 @@
+{% load menu_tags %}
+    {% for child in children %}
+<!-- no child pages  -->
+
+            <li class="nav-item hs-has-sub-menu u-header__nav-item"
+                data-event="hover"
+                data-animation-in="fadeInUp"
+                data-animation-out="fadeOut">
+
+                <a 
+                    id="homeMegaMenu" 
+                    class="nav-link u-header__nav-link"
+                    href="{{ child.attr.redirect_url|default:child.get_absolute_url }}"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-labelledby="homeSubMenu">
+                
+                {{ child.get_menu_title }}
+                </a>
+            </li>
+
+<!-- /no child pages  -->
+    {% endfor %} 
+
+<!-- Button -->
+<li class="nav-item u-header__nav-item-btn">
+<a class="btn btn-sm btn-primary" href="#signupModal" role="button"
+    data-modal-target="#signupModal"
+    data-overlay-color="#151b26">
+    <i class="fa fa-user-circle mr-1"></i>
+    Signin
+</a>
+</li>
+<!-- End Button -->

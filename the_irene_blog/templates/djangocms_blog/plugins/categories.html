@@ -1,0 +1,25 @@
+{% load i18n %}{% spaceless %}
+<div class="mb-7">
+    <h3 class="h5 mb-3">{% trans "Categories" %}</h3>
+
+    <div class="border rounded p-4">
+        <!-- Categories List -->
+        <ul class="list-unstyled">
+            {% for category in categories %}
+                <li class="py-1"><a class="text-secondary" href="{{ category.get_absolute_url }}" class="blog-categories-{{ category.count }}">
+                    {{ category.name }}
+                    <span>(
+                        {% if category.count > 0 %}
+                        {% blocktrans count articles=category.count %}1 article{% plural %}{{ articles }} articles{% endblocktrans %}
+                        {% else %}{% trans "0 articles" %}{% endif %}
+                    )</span>
+                </a></li>
+                <li class="dropdown-divider"></li>
+            {% empty %}
+                <li class="blog-empty"><p>{% trans "No categories found." %}</p></li>
+            {% endfor %}
+        </ul>
+        <!-- End Categories List -->
+    </div>
+</div>
+{% endspaceless %}
