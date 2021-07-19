@@ -129,3 +129,4 @@ BLOG_PERMALINK_URLS = {
     "short_date": "<int:year>/<int:month>/<str:slug>/",
     "category": "<str:category>/<str:slug>/",
 }
+

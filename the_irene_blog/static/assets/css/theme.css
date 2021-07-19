@@ -19,7 +19,8 @@
   --white: #fff;
   --gray: #8c98a4;
   --gray-dark: #343a40;
-  --primary: #020094;
+  --primary: #e50914;
+  --primary-light:#ff3b45;
   --secondary: #646f79;
   --success: var(--primary);
   --info: #00dffc;
@@ -164,17 +165,17 @@ a {
 }
 
 a:hover {
-  color: #168652;
+  color: var(--primary-light);
   text-decoration: none;
 }
 
 a:not([href]) {
-  color: inherit;
+  color: var(--primary);
   text-decoration: none;
 }
 
 a:not([href]):hover {
-  color: inherit;
+  color: var(--primary-light);
   text-decoration: none;
 }
 
@@ -2673,14 +2674,14 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #1ca766;
-  border-color: #1a9c5f;
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
 }
 
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #1ca766;
-  border-color: #1a9c5f;
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
   box-shadow: 0 0 0 0.2rem rgba(66, 208, 142, 0.5);
 }
 
@@ -2965,6 +2966,16 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #796eff;
   border-color: #796eff;
+}
+
+.btn-primary-light{
+  color: #fff;
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
+}
+.btn_primary:hover{
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-purple:hover {
@@ -3569,7 +3580,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-link:hover {
-  color: #168652;
+  color: var(--primary-light);
   text-decoration: none;
 }
 
@@ -12077,7 +12088,7 @@ button.bg-dark-soft:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #168652 !important;
+  color: var(--primary-light) !important;
 }
 
 .text-secondary {
@@ -12093,7 +12104,7 @@ a.text-secondary:hover, a.text-secondary:focus {
 }
 
 a.text-success:hover, a.text-success:focus {
-  color: #168652 !important;
+  color: var(--primary-light) !important;
 }
 
 .text-info {
@@ -12620,7 +12631,7 @@ h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a,
 
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover,
 .h1 > a:hover, .h2 > a:hover, .h3 > a:hover, .h4 > a:hover, .h5 > a:hover, .h6 > a:hover {
-  color: #168652;
+  color: var(--primary-light);
 }
 
 h1.text-white > a, h2.text-white > a, h3.text-white > a, h4.text-white > a, h5.text-white > a, h6.text-white > a,
@@ -20624,7 +20635,7 @@ button:focus {
 }
 
 .text-secondary[href]:hover {
-  color: #21c87a !important;
+  color: var(--primary-light) !important;
 }
 
 /*------------------------------------
@@ -21123,7 +21134,7 @@ button:focus {
 }
 
 .u-slick {
-  background: url(..//svg/preloaders/slick-carousel-preloader-primary.svg) no-repeat 50% 50%;
+  background: url(../svg/preloaders/slick-carousel-preloader-primary.svg) no-repeat 50% 50%;
 }
 
 .u-slick .js-next,

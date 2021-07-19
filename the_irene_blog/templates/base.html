@@ -52,9 +52,9 @@
         <nav class="js-mega-menu navbar navbar-expand-lg u-header__navbar">
           <!-- Logo -->
           <div class="u-header__navbar-brand-wrapper">
-            <a class="navbar-brand u-header__navbar-brand" href="/" aria-label="Space">
-              <img class="u-header__navbar-brand-default" src="{% static 'assets/img/wavelogo.svg' %}" alt="Logo">
-              <img class="u-header__navbar-brand-mobile" src="{% static 'assets/img/wavelogo.svg' %}" alt="Logo">
+            <a class="navbar-brand u-header__navbar-brand text-center" href="/" aria-label="Space">
+              <img class="u-header__navbar-brand-default w-75" src="{% static 'assets/img/logo.svg' %}" alt="Logo">
+              <img class="u-header__navbar-brand-mobile" src="{% static 'assets/img/logo.svg' %}" alt="Logo">
             </a>
           </div>
           <!-- End Logo -->
@@ -139,12 +139,12 @@
 
         <div class="col-lg-4 order-lg-1 d-flex align-items-start flex-column">
           <!-- Logo -->
-          <a class="d-inline-block mb-5" href="index.html" aria-label="Space">
-            <img src="../../assets/svg/logos/logo-short-white.svg" alt="Logo" style="width: 40px; max-width: 100%;">
+          <a class="d-inline-block mb-2" href="index.html" aria-label="Space">
+            <img src="{% static 'assets/img/logo.svg' %}" alt="Logo" style="width: 40px; max-width: 100%;">
           </a>
           <!-- End Logo -->
 
-          <p class="small text-muted">All rights reserved. &copy; Space. 2019 Htmlstream.</p>
+          <p class="small text-muted">All rights reserved. &copy; the irene blog. 2021.</p>
         </div>
       </div>
     </div>
@@ -190,7 +190,7 @@
               <ul class="list-unstyled font-size-14 mb-5">
                 <li>
                   <a class="media align-items-center u-sidebar--panel__link py-2 px-5" href="#">
-                    <img class="max-width-4 mr-3" src="../../assets/svg/components/finance-dark-icon.svg" alt="Image Description">
+                    <img class="max-width-4 mr-3" src="{% static 'assets/svg/components/finance-dark-icon.svg' %}" alt="Image Description">
                     <div class="media-body">
                       <span>Dashboard</span>
                     </div>
@@ -530,7 +530,6 @@
   <script src="{% static 'assets/js/components/hs.malihu-scrollbar.js' %}"></script>
   <script src="{% static 'assets/js/components/hs.modal-window.js' %}"></script>
   <script src="{% static 'assets/js/components/hs.show-animation.js' %}"></script>
-  <script src="{% static 'assets/js/components/hs.instagram.js' %}"></script>
   <script src="{% static 'assets/js/components/hs.go-to.js' %}"></script>
 
   {% block script %}{% endblock script %}
@@ -581,22 +580,6 @@
 
       // initialization of show animations
       $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-      // initialization of instagram api
-      $.HSCore.components.HSInstagram.init('#instaFeed', {
-        resolution: 'standard_resolution',
-        after: function () {
-          // initialization of masonry.js
-          var $grid = $('.js-instagram').masonry({
-            percentPosition: true
-          });
-
-          // initialization of images loaded
-          $grid.imagesLoaded().progress(function () {
-            $grid.masonry();
-          });
-        }
-      });
 
       // initialization of go to
       $.HSCore.components.HSGoTo.init('.js-go-to');
