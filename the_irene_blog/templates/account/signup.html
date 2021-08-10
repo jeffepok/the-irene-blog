@@ -1,0 +1,158 @@
+
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block content %}
+<div class="container">
+  <div class="row space-2">
+    <div class="col-12 col-lg-6 mx-auto">
+      <div class="p-5 bg-white rounded">
+        <form method="POST" action="{% url 'account_signup' %}" class="js-validate">
+            {% csrf_token %}
+            <!-- Signup -->
+            <div id="signup" data-target-group="idForm">
+            <!-- Title -->
+            <header class="text-center mb-5">
+                <h2 class="h4 mb-0">Please sign up</h2>
+                <p>Fill out the form to get started.</p>
+            </header>
+            <!-- End Title -->
+
+            <!-- Input -->
+            <div class="js-form-message mb-3">
+
+                <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                    <span class="input-group-text form__text">
+                    <i class="fa fa-user form__text-inner"></i>
+                    </span>
+                </div>
+                {{form.email.as_widget}}
+                </div>
+                
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.email.errors}}
+                </div>
+            </div>
+            <!-- End Input -->
+
+                        <!-- Input -->
+            <div class="js-form-message mb-3">
+                <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                    <span class="input-group-text form__text">
+                    <i class="fa fa-user form__text-inner"></i>
+                    </span>
+                </div>
+                    {{form.username.as_widget}}
+                </div>
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.username.errors}}
+                </div>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="js-form-message mb-3">
+                <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                    <span class="input-group-text form__text">
+                    <i class="fa fa-lock form__text-inner"></i>
+                    </span>
+                </div>
+                    {{form.password1.as_widget}}
+                </div>
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.password1.errors}}
+                </div>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="js-form-message mb-3">
+                <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                    <span class="input-group-text form__text">
+                    <i class="fa fa-key form__text-inner"></i>
+                    </span>
+                </div>
+                    {{form.password2.as_widget}}
+                </div>
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.password2.errors}}
+                </div>
+            </div>
+            <!-- End Input -->
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-block btn-primary">Signup</button>
+            </div>
+
+            <div class="text-center mb-3">
+                <p class="text-muted">
+                Have an account?
+                <a class="" href="{% url 'account_login'%}"
+                    data-link-group="idForm"
+                    data-animation-in="fadeIn">Signin
+                </a>
+                </p>
+            </div>
+
+            <!-- Divider -->
+            <div class="text-center u-divider-wrapper my-3">
+                <span class="u-divider u-divider--xs u-divider--text">OR</span>
+            </div>
+            <!-- End Divider -->
+
+            <!-- Signup Social Buttons -->
+            <div class="row mx-gutters-2 mb-4">
+                <div class="col-sm-6 mb-2 mb-sm-0">
+                <button type="button" class="btn btn-block btn-facebook text-nowrap">
+                    <i class="fab fa-facebook-f mr-2"></i>
+                    Signup with Facebook
+                </button>
+                </div>
+                <div class="col-sm-6">
+                <button type="button" class="btn btn-block btn-twitter">
+                    <i class="fab fa-twitter mr-2"></i>
+                    Signup with Twitter
+                </button>
+                </div>
+            </div>
+            <!-- End Signup Social Buttons -->
+            </div>
+            <!-- End Signup -->
+
+            <!-- Forgot Password -->
+            <div id="forgotPassword" style="display: none; opacity: 0;" data-target-group="idForm">
+            <!-- Title -->
+            <header class="text-center mb-5">
+                <h2 class="h4 mb-0">Recover account</h2>
+                <p>Enter your email address and an email with instructions will be sent to you.</p>
+            </header>
+            <!-- End Title -->
+
+
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-block btn-primary">Recover Account</button>
+            </div>
+
+            <div class="text-center mb-3">
+                <p class="text-muted">
+                Have an account?
+                <a class="js-animation-link" href="javascript:;"
+                    data-target="#signin"
+                    data-link-group="idForm"
+                    data-animation-in="fadeIn">Signin
+                </a>
+                </p>
+            </div>
+            </div>
+            <!-- End Forgot Password -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

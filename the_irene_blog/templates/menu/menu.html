@@ -23,12 +23,33 @@
     {% endfor %} 
 
 <!-- Button -->
-<li class="nav-item u-header__nav-item-btn">
-<a class="btn btn-sm btn-primary" href="#signupModal" role="button"
-    data-modal-target="#signupModal"
-    data-overlay-color="#151b26">
-    <i class="fa fa-user-circle mr-1"></i>
-    Signin
-</a>
-</li>
+{% if not user.is_authenticated %}
+    <li class="nav-item u-header__nav-item-btn">
+        <a class="btn btn-sm btn-purple" href="{% url 'account_login' %}" role="button"
+            data-overlay-color="#151b26">
+            <i class="fa fa-user-circle mr-1"></i>
+            Signin
+        </a>
+    </li>
+{% else %}
+    <li class="nav-item u-header__nav-item-btn">
+        <a
+            id="sidebarNavToggler" class="" href="javascript:;" role="button"
+            aria-controls="sidebarContent"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-unfold-event="click"
+            data-unfold-hide-on-scroll="false"
+            data-unfold-target="#sidebarContent"
+            data-unfold-type="css-animation"
+            data-unfold-animation-in="fadeInRight"
+            data-unfold-animation-out="fadeOutRight"
+            data-unfold-duration="500">
+            <i class="fa fa-user-circle mr-1"></i>{{user.username}}
+        </a>
+    </li>
+{% endif %}
+
 <!-- End Button -->
+
+

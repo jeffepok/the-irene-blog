@@ -70,31 +70,67 @@ MIDDLEWARE = ['cms.middleware.utils.ApphookReloadMiddleware',
               'cms.middleware.page.CurrentPageMiddleware',
               'cms.middleware.toolbar.ToolbarMiddleware',
               'cms.middleware.language.LanguageCookieMiddleware']
-INSTALLED_APPS = ['djangocms_admin_style', 'django.contrib.auth',
-                  'django.contrib.contenttypes', 'django.contrib.sessions',
-                  'django.contrib.admin', 'django.contrib.sites',
-                  'django.contrib.sitemaps', 'django.contrib.staticfiles',
-                  'django.contrib.messages', 'cms', 'menus', 'sekizai', 'treebeard',
-                  'djangocms_text_ckeditor', 'filer', 'easy_thumbnails',
-                  'djangocms_bootstrap4',
-                  'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-                  'djangocms_bootstrap4.contrib.bootstrap4_badge',
-                  'djangocms_bootstrap4.contrib.bootstrap4_card',
-                  'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-                  'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-                  'djangocms_bootstrap4.contrib.bootstrap4_content',
-                  'djangocms_bootstrap4.contrib.bootstrap4_grid',
-                  'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-                  'djangocms_bootstrap4.contrib.bootstrap4_link',
-                  'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-                  'djangocms_bootstrap4.contrib.bootstrap4_media',
-                  'djangocms_bootstrap4.contrib.bootstrap4_picture',
-                  'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-                  'djangocms_bootstrap4.contrib.bootstrap4_utilities', 'djangocms_file',
-                  'djangocms_icon', 'djangocms_link', 'djangocms_picture',
-                  'djangocms_style', 'djangocms_googlemap', 'djangocms_video',
-                  'the_irene_blog', 'aldryn_apphooks_config', 'parler', 'taggit',
-                  'taggit_autosuggest', 'meta', 'djangocms_blog', 'sortedm2m']
+INSTALLED_APPS = [
+    'djangocms_admin_style', 
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.admin', 
+    'django.contrib.sites',
+                        
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'django.contrib.sitemaps', 
+    'django.contrib.staticfiles',
+    'django.contrib.messages', 
+    'cms', 'menus', 'sekizai', 
+    'treebeard',
+    'djangocms_text_ckeditor', 
+    'filer', 'easy_thumbnails',
+    'djangocms_bootstrap4',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+    'djangocms_bootstrap4.contrib.bootstrap4_badge',
+    'djangocms_bootstrap4.contrib.bootstrap4_card',
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+    'djangocms_bootstrap4.contrib.bootstrap4_content',
+    'djangocms_bootstrap4.contrib.bootstrap4_grid',
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+    'djangocms_bootstrap4.contrib.bootstrap4_media',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities', 
+    'djangocms_file',
+    'djangocms_icon', 
+    'djangocms_link', 
+    'djangocms_picture',
+    'djangocms_style',
+    'djangocms_googlemap', 
+    'djangocms_video',
+    'the_irene_blog', 
+    'aldryn_apphooks_config', 
+    'parler', 
+    'taggit',
+    'taggit_autosuggest',
+    'meta', 
+    'djangocms_blog', 
+    'sortedm2m'
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 LANGUAGES = ('en', gettext('en')),
 CMS_LANGUAGES = {(1): [{'code': 'en', 'name': gettext('en'),
                         'redirect_on_fallback': True, 'public': True, 'hide_untranslated':
@@ -130,3 +166,44 @@ BLOG_PERMALINK_URLS = {
     "category": "<str:category>/<str:slug>/",
 }
 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '788455549082-fltgfngg9qmo28954mal17fllrhf35ob.apps.googleusercontent.com',
+            'secret': 'nuRsroHhInNKAeEHgQ_78Fim',
+        }
+    },
+    'facebook': {
+        'METHOD': 'js_sdk',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': True,
+        'VERSION': 'v7.0',
+    }
+}
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1524159057923231'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='f7f935c1285b144cc24ae11703fa7962' #app key
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_AUTHENTICATION_METHOD="email"
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_FORMS = {
+    'login': 'accounts.forms.LoginForm',
+    'signup': 'accounts.forms.SignupForm'
+    }

@@ -1,5 +1,5 @@
 node_modules
 sass_processors
 the_irene_blog_env
+*.env
 __pycache__
-project.db

@@ -1,0 +1,119 @@
+
+{% extends "base.html" %}
+{% load cms_tags %}
+{% load account socialaccount %}
+{% providers_media_js %}
+{% get_providers as socialaccount_providers %}
+
+{% block content %}
+<div class="container">
+  <div class="row space-2">
+    <div class="col-12 col-lg-6 mx-auto">
+      <div class="p-5 bg-white rounded">
+        <form method="POST" action="{% url 'account_login' %}" class="js-validate">
+        {% csrf_token %}
+          <!-- Signin -->
+          <div id="signin" data-target-group="idForm">
+            <!-- Title -->
+            <header class="text-center mb-5">
+              <h2 class="h4 mb-0">Please sign in</h2>
+              <p>Signin to manage your account.</p>
+            </header>
+            <!-- End Title -->
+
+            <!-- Input -->
+            <div class="js-form-message mb-3">
+              <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                  <span class="input-group-text form__text">
+                    <i class="fa fa-user form__text-inner"></i>
+                  </span>
+                </div>
+
+                  {{form.login.as_widget}}
+              </div>
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.login.errors}}
+                </div>
+            </div>
+            <!-- End Input -->
+
+            <!-- Input -->
+            <div class="js-form-message mb-3">
+              <div class="js-focus-state input-group form">
+                <div class="input-group-prepend form__prepend">
+                  <span class="input-group-text form__text">
+                    <i class="fa fa-lock form__text-inner"></i>
+                  </span>
+                </div>
+                  {{form.password.as_widget}}
+              </div>
+              {% if form.errors %}
+                <div class="invalid-feedback" style="display: block;">
+                    {{form.non_field_errors}}
+                </div>
+              {% endif %}
+            </div>
+            <!-- End Input -->
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+            <div class="row mb-3">
+              <div class="col-6">
+                <!-- Checkbox -->
+                <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                  <input type="checkbox" class="custom-control-input" id="rememberMeCheckbox">
+                  <label class="custom-control-label" for="rememberMeCheckbox">
+                    Remember Me
+                  </label>
+                </div>
+                <!-- End Checkbox -->
+              </div>
+
+              <div class="col-6 text-right">
+                <a class="js-animation-link float-right" href="javascript:;"
+                  data-target="#forgotPassword"
+                  data-link-group="idForm"
+                  data-animation-in="fadeIn">Forgot Password?</a>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-block btn-primary">Signin</button>
+            </div>
+
+            <div class="text-center mb-3">
+              <p class="text-muted">
+                Do not have an account?
+                <a class="" href="{% url 'account_signup' %}"
+                  data-animation-in="fadeIn">Signup
+                </a>
+              </p>
+            </div>
+
+            <!-- Divider -->
+            <div class="text-center u-divider-wrapper my-3">
+              <span class="u-divider u-divider--xs u-divider--text">OR</span>
+            </div>
+            <!-- End Divider -->
+
+            <!-- Signin Social Buttons -->
+            <div class="row mx-gutters-2 mb-4">
+
+                {% include "socialaccount/snippets/provider_list.html" with process_caption="Sign in with" process="login" %}
+              
+            </div>
+            {% include "socialaccount/snippets/login_extra.html" %}
+
+            <!-- End Signin Social Buttons -->
+          </div>
+          <!-- End Signin -->
+        </form>
+      </div>  
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+     
