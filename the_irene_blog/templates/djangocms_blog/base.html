@@ -1,5 +1,4 @@
 {% extends CMS_TEMPLATE %}
-
 {% block meta %}
     {% comment %}
     This is needed if you can't add ``{% include "meta/meta.html" %}`` in the django CMS template attached to the blog
@@ -16,5 +15,5 @@
 {% endblock meta %}
 
 {% block blog_app_content %}
-    {% block content_blog %}{% endblock %}
+    {% block content_blog %}{% endblock content_blog %}
 {% endblock blog_app_content %}

@@ -120,7 +120,8 @@ INSTALLED_APPS = [
     'taggit_autosuggest',
     'meta', 
     'djangocms_blog', 
-    'sortedm2m'
+    'sortedm2m',
+    'discussions'
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -206,4 +207,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_FORMS = {
     'login': 'accounts.forms.LoginForm',
     'signup': 'accounts.forms.SignupForm'
-    }
+}
+
+DISCUSSION_PLUGIN_TEMPLATES = [
+    ("discussions/plugins/discussion_template1.html", "Template 1")
+]

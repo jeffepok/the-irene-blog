@@ -60,9 +60,11 @@
     </div>
     <!-- End Hero Section -->
 {% endif %}
-{% endblock content %} {% block content_blog %}
+{% endblock content %} 
 
-<div class="col-lg-9 mb-9 mb-lg-0">
+{% block content_blog %}
+
+
   <div class="card-deck d-block d-lg-flex">
     {% for post in post_list %} {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %} {% empty %}
     <p class="blog-empty">{% trans "No article found." %}</p>
@@ -90,9 +92,7 @@
     {% endif %}
   </nav>
   {% endif %}
-</div>
-
-{% endblock %} 
+{% endblock content_blog%} 
 {% block script %}
   <script src="{% static 'assets/js/components/hs.slick-carousel.js' %}"></script>
   <script src="{% static 'assets/js/components/hs.cubeportfolio.js' %}"></script>
